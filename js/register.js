@@ -16,10 +16,10 @@ form.addEventListener("submit", async (e) => {
 
     e.preventDefault();
 
-    const voornaam = document.getElementById("voornaam").value;
-    const achternaam = document.getElementById("achternaam").value;
-    const email = document.getElementById("email").value;
-    const telefoon = document.getElementById("telefoon").value;
+    const voornaam = document.getElementById("voornaam").value.trim();
+    const achternaam = document.getElementById("achternaam").value.trim();
+    const email = document.getElementById("email").value.trim();
+    const telefoon = document.getElementById("telefoon").value.trim();
     const geboortedatum = document.getElementById("geboortedatum").value;
     const geslacht = document.getElementById("geslacht").value;
 
@@ -28,36 +28,37 @@ form.addEventListener("submit", async (e) => {
 
     const nieuwsbrief = document.getElementById("nieuwsbrief").checked;
 
-    if(password !== password2){
-
-        alert("Wachtwoorden komen niet overeen.");
+    if (password !== password2) {
+        alert("❌ Wachtwoorden komen niet overeen.");
         return;
-
     }
 
-    try{
+    try {
 
-        const userCredential =
-            await createUserWithEmailAndPassword(
-                auth,
-                email,
-                password
-            );
+        // Account aanmaken
+        const userCredential = await createUserWithEmailAndPassword(
+            auth,
+            email,
+            password
+        );
 
         const user = userCredential.user;
 
-        await setDoc(doc(db,"klanten",user.uid),{
+        console.log("✅ Account aangemaakt:", user.uid);
 
-            voornaam: voornaam,
-            achternaam: achternaam,
-            email: email,
-            telefoon: telefoon,
-            geboortedatum: geboortedatum,
-            geslacht: geslacht,
+        // Gegevens opslaan in Firestore
+        await setDoc(doc(db, "klanten", user.uid), {
+
+            voornaam,
+            achternaam,
+            email,
+            telefoon,
+            geboortedatum,
+            geslacht,
 
             punten: nieuwsbrief ? 20 : 0,
 
-            nieuwsbrief: nieuwsbrief,
+            nieuwsbrief,
 
             lidmaatschap: false,
 
@@ -67,15 +68,21 @@ form.addEventListener("submit", async (e) => {
 
         });
 
+        console.log("✅ Firestore-document opgeslagen.");
+
         alert("🎉 Welkom bij MIJNsimplyhenna!");
 
-        window.location.href="dashboard.html";
+        window.location.href = "dashboard.html";
 
-    }
+    } catch (error) {
 
-    catch(error){
+        console.error(error);
 
-        alert(error.message);
+        alert(
+            "Er ging iets mis.\n\n" +
+            error.code + "\n\n" +
+            error.message
+        );
 
     }
 
