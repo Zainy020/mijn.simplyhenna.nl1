@@ -216,27 +216,7 @@ Heb je al een account?
 
 </div>
 
-<script>
-
-document.getElementById("registerForm").addEventListener("submit",function(e){
-
-e.preventDefault();
-
-const password=document.getElementById("password").value;
-const password2=document.getElementById("password2").value;
-
-if(password!==password2){
-
-alert("De wachtwoorden komen niet overeen.");
-return;
-
-}
-
-alert("🎉 Registratie werkt straks met Firebase!");
-
-});
-
-</script>
+<script type="module" src="js/register.js"></script>
 
 </body>
 </html>
