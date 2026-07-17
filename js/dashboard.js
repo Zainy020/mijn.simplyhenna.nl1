@@ -43,11 +43,14 @@ onAuthStateChanged(auth, async (user) => {
       ? "💎 Simply Henna+ actief"
       : "💎 Geen Simply Henna+";
 
-  } catch (error) {
+catch (error) {
     console.error(error);
-    alert("Er ging iets mis bij het laden van je gegevens.");
-  }
 
+    alert(
+        error.code + "\n\n" +
+        error.message
+    );
+}
 });
 
 logoutButton.addEventListener("click", async () => {
