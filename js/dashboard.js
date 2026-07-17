@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dashboard | MIJNsimplyhenna</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+}
+
+body{
+background:#f7f1eb;
+}
+
+header{
+background:#5C3A21;
+color:white;
+padding:25px;
+}
+
+header h1{
+font-size:30px;
+}
+
+.container{
+max-width:1100px;
+margin:auto;
+padding:30px;
+}
+
+.card{
+background:white;
+border-radius:18px;
+padding:25px;
+margin-bottom:25px;
+box-shadow:0 10px 25px rgba(0,0,0,.08);
+}
+
+.grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+gap:20px;
+}
+
+.tile{
+background:white;
+padding:25px;
+border-radius:18px;
+box-shadow:0 8px 20px rgba(0,0,0,.08);
+cursor:pointer;
+transition:.2s;
+text-decoration:none;
+color:black;
+}
+
+.tile:hover{
+transform:translateY(-5px);
+}
+
+.tile h2{
+color:#5C3A21;
+margin-bottom:10px;
+}
+
+.logout{
+background:#8B2E2E;
+color:white;
+border:none;
+padding:14px 22px;
+border-radius:12px;
+cursor:pointer;
+font-size:16px;
+margin-top:20px;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<header>
+
+<h1 id="welcome">🤎 Hallo!</h1>
+
+<p>Welkom terug bij MIJNsimplyhenna.</p>
+
+</header>
+
+<div class="container">
+
+<div class="card">
+
+<h2>⭐ Henna Points</h2>
+
+<h1 id="punten">...</h1>
+
+<p id="membership">💎 Geen Simply Henna+ lid</p>
+
+</div>
+
+<div class="grid">
+
+<a class="tile" href="#">
+<h2>👤 Mijn profiel</h2>
+<p>Bekijk en wijzig je gegevens.</p>
+</a>
+
+<a class="tile" href="#">
+<h2>🎁 Beloningen</h2>
+<p>Bekijk alle beschikbare beloningen.</p>
+</a>
+
+<a class="tile" href="#">
+<h2>📜 Geschiedenis</h2>
+<p>Bekijk je puntenhistorie.</p>
+</a>
+
+<a class="tile" href="#">
+<h2>⚙️ Instellingen</h2>
+<p>Pas je account aan.</p>
+</a>
+
+</div>
+
+<button class="logout" id="logoutButton">
+Uitloggen
+</button>
+
+</div>
+
+<script type="module" src="js/dashboard.js"></script>
+
+</body>
+</html>
