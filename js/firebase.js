@@ -1,18 +1,14 @@
-import { initializeApp } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-app.js";
-import { getAuth } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-auth.js";
-import { getFirestore } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-firestore.js";
+rules_version = '2';
 
-const firebaseConfig = {
-  apiKey: "AIzaSyBiPnAGBAmBiNolsZD44jPx0-Q-6bu8wIU",
-  authDomain: "simplyhenna-dff3e.firebaseapp.com",
-  projectId: "simplyhenna-dff3e",
-  storageBucket: "simplyhenna-dff3e.firebasestorage.app",
-  messagingSenderId: "148761928976",
-  appId: "1:148761928976:web:e6f3e2ceeaa18401aaf195",
-  measurementId: "G-G0C4FKLZBR"
-};
+service cloud.firestore {
+  match /databases/{database}/documents {
 
-const app = initializeApp(firebaseConfig);
+    match /klanten/{userId} {
 
-export const auth = getAuth(app);
-export const db = getFirestore(app);
+      allow read, write: if request.auth != null
+                          && request.auth.uid == userId;
+
+    }
+
+  }
+}
