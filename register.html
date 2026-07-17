@@ -1,1 +1,242 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Account aanmaken | MIJNsimplyhenna</title>
 
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+}
+
+body{
+background:#f7f1eb;
+display:flex;
+justify-content:center;
+align-items:center;
+min-height:100vh;
+padding:40px;
+}
+
+.card{
+
+background:white;
+width:100%;
+max-width:650px;
+padding:40px;
+border-radius:20px;
+box-shadow:0 15px 35px rgba(0,0,0,.08);
+
+}
+
+h1{
+
+color:#5C3A21;
+margin-bottom:10px;
+
+}
+
+p{
+
+color:#777;
+margin-bottom:30px;
+
+}
+
+h2{
+
+color:#5C3A21;
+font-size:18px;
+margin-top:25px;
+margin-bottom:15px;
+
+}
+
+label{
+
+display:block;
+font-weight:600;
+margin-bottom:6px;
+margin-top:16px;
+
+}
+
+input,
+select{
+
+width:100%;
+padding:14px;
+border:1px solid #ddd;
+border-radius:10px;
+font-size:15px;
+
+}
+
+.checkbox{
+
+display:flex;
+align-items:flex-start;
+gap:10px;
+margin-top:18px;
+
+}
+
+.checkbox input{
+
+width:auto;
+margin-top:4px;
+
+}
+
+button{
+
+width:100%;
+margin-top:30px;
+padding:15px;
+background:#5C3A21;
+color:white;
+border:none;
+border-radius:12px;
+font-size:16px;
+font-weight:600;
+cursor:pointer;
+transition:.2s;
+
+}
+
+button:hover{
+
+background:#452b18;
+
+}
+
+.bottom{
+
+text-align:center;
+margin-top:25px;
+
+}
+
+.bottom a{
+
+color:#5C3A21;
+font-weight:600;
+text-decoration:none;
+
+}
+
+small{
+
+color:#888;
+
+}
+
+</style>
+
+</head>
+<body>
+
+<div class="card">
+
+<h1>🤎 Account aanmaken</h1>
+
+<p>Word lid van MIJNsimplyhenna en spaar Henna Points!</p>
+
+<form id="registerForm">
+
+<h2>Persoonlijke gegevens</h2>
+
+<label>Voornaam *</label>
+<input type="text" id="voornaam" required>
+
+<label>Achternaam</label>
+<input type="text" id="achternaam">
+
+<label>E-mailadres *</label>
+<input type="email" id="email" required>
+
+<label>Telefoonnummer</label>
+<input type="tel" id="telefoon">
+
+<label>Geboortedatum</label>
+<input type="date" id="geboortedatum">
+
+<label>Geslacht</label>
+
+<select id="geslacht">
+
+<option value="">Kies een optie</option>
+<option>Vrouw</option>
+<option>Man</option>
+<option>X / Anders</option>
+<option>Zeg ik liever niet</option>
+
+</select>
+
+<h2>Account</h2>
+
+<label>Wachtwoord *</label>
+<input type="password" id="password" required>
+
+<label>Bevestig wachtwoord *</label>
+<input type="password" id="password2" required>
+
+<div class="checkbox">
+<input type="checkbox" required>
+<small>Ik ga akkoord met de Algemene Voorwaarden.</small>
+</div>
+
+<div class="checkbox">
+<input type="checkbox" id="nieuwsbrief">
+<small>Ik wil de nieuwsbrief ontvangen (+20 Henna Points 🎁)</small>
+</div>
+
+<button type="submit">
+Account aanmaken
+</button>
+
+</form>
+
+<div class="bottom">
+
+Heb je al een account?
+
+<br><br>
+
+<a href="login.html">Inloggen →</a>
+
+</div>
+
+</div>
+
+<script>
+
+document.getElementById("registerForm").addEventListener("submit",function(e){
+
+e.preventDefault();
+
+const password=document.getElementById("password").value;
+const password2=document.getElementById("password2").value;
+
+if(password!==password2){
+
+alert("De wachtwoorden komen niet overeen.");
+return;
+
+}
+
+alert("🎉 Registratie werkt straks met Firebase!");
+
+});
+
+</script>
+
+</body>
+</html>
