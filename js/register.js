@@ -7,7 +7,8 @@ import {
 import {
     doc,
     setDoc,
-    serverTimestamp
+    serverTimestamp,
+    runTransaction
 } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-firestore.js";
 
 const form = document.getElementById("registerForm");
@@ -47,27 +48,49 @@ form.addEventListener("submit", async (e) => {
         console.log("✅ Account aangemaakt:", user.uid);
 
         // Gegevens opslaan in Firestore
-        await setDoc(doc(db, "klanten", user.uid), {
+// Klantnummer genereren
+const klantnummer = await runTransaction(db, async (transaction) => {
 
-            voornaam,
-            achternaam,
-            email,
-            telefoon,
-            geboortedatum,
-            geslacht,
+    const counterRef = doc(db, "config", "counters");
+    const counterSnap = await transaction.get(counterRef);
 
-            punten: nieuwsbrief ? 20 : 0,
+    if (!counterSnap.exists()) {
+        throw new Error("Counter bestaat niet.");
+    }
 
-            nieuwsbrief,
+    const nextNumber = counterSnap.data().nextCustomerNumber;
 
-            lidmaatschap: false,
+    transaction.update(counterRef, {
+        nextCustomerNumber: nextNumber + 1
+    });
 
-            rol: "klant",
+    return "SH-" + String(nextNumber).padStart(6, "0");
 
-            aangemaaktOp: serverTimestamp()
+});
 
-        });
+// Gegevens opslaan
+await setDoc(doc(db, "klanten", user.uid), {
 
+    klantnummer,
+
+    voornaam,
+    achternaam,
+    email,
+    telefoon,
+    geboortedatum,
+    geslacht,
+
+    punten: nieuwsbrief ? 20 : 0,
+
+    nieuwsbrief,
+
+    lidmaatschap: false,
+
+    rol: "klant",
+
+    aangemaaktOp: serverTimestamp()
+
+});
         console.log("✅ Firestore-document opgeslagen.");
 
         alert("🎉 Welkom bij MIJNsimplyhenna!");
