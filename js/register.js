@@ -80,7 +80,7 @@ await setDoc(doc(db, "klanten", user.uid), {
     geboortedatum,
     geslacht,
 
-    punten: nieuwsbrief ? 20 : 0,
+    punten: nieuwsbrief ? 0 : 0,
 
     nieuwsbrief,
 
