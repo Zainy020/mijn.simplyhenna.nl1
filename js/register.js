@@ -71,24 +71,25 @@ const klantnummer = await runTransaction(db, async (transaction) => {
 // Gegevens opslaan
 await setDoc(doc(db, "klanten", user.uid), {
 
-    klantnummer,
+klantnummer,
 
-    voornaam,
-    achternaam,
-    email,
-    telefoon,
-    geboortedatum,
-    geslacht,
+voornaam,
+achternaam,
+email,
+telefoon,
+geboortedatum,
+geslacht,
 
-    punten: nieuwsbrief ? 0 : 0,
+punten: 0,
 
-    nieuwsbrief,
+nieuwsbrief,
+eersteKorting: nieuwsbrief,
 
-    lidmaatschap: false,
+lidmaatschap: false,
 
-    rol: "klant",
+rol: "klant",
 
-    aangemaaktOp: serverTimestamp()
+aangemaaktOp: serverTimestamp()
 
 });
         console.log("✅ Firestore-document opgeslagen.");
