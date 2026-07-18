@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mijn Profiel | Simply Henna</title>
+
+    <link rel="stylesheet" href="profile.css">
+</head>
+<body>
+
+<div class="container">
+
+    <h1>👤 Mijn profiel</h1>
+
+    <form id="profileForm">
+
+        <label>Voornaam</label>
+        <input type="text" id="voornaam">
+
+        <label>Achternaam</label>
+        <input type="text" id="achternaam">
+
+        <label>E-mailadres</label>
+        <input type="email" id="email" disabled>
+
+        <label>Telefoonnummer</label>
+        <input type="tel" id="telefoon">
+
+        <label>Geboortedatum</label>
+        <input type="date" id="geboortedatum">
+
+        <label>Geslacht</label>
+        <select id="geslacht">
+            <option>Man</option>
+            <option>Vrouw</option>
+            <option>Anders</option>
+            <option>Zeg ik liever niet</option>
+        </select>
+
+        <label>
+            <input type="checkbox" id="nieuwsbrief">
+            Ik wil de nieuwsbrief ontvangen
+        </label>
+
+        <button type="submit">
+            💾 Wijzigingen opslaan
+        </button>
+
+    </form>
+
+</div>
+
+<script type="module" src="profile.js"></script>
+
+</body>
+</html>
