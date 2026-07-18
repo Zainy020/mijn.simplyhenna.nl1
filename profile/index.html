@@ -11,26 +11,34 @@
 
 <div class="container">
 
+    <a href="../dashboard.html" class="backButton">
+        ← Terug naar dashboard
+    </a>
+
     <h1>👤 Mijn profiel</h1>
+
+    <div id="successMessage" class="success">
+        ✅ Je profiel is succesvol opgeslagen.
+    </div>
 
     <form id="profileForm">
 
-        <label>Voornaam</label>
+        <label for="voornaam">Voornaam</label>
         <input type="text" id="voornaam">
 
-        <label>Achternaam</label>
+        <label for="achternaam">Achternaam</label>
         <input type="text" id="achternaam">
 
-        <label>E-mailadres</label>
+        <label for="email">E-mailadres</label>
         <input type="email" id="email" disabled>
 
-        <label>Telefoonnummer</label>
+        <label for="telefoon">Telefoonnummer</label>
         <input type="tel" id="telefoon">
 
-        <label>Geboortedatum</label>
+        <label for="geboortedatum">Geboortedatum</label>
         <input type="date" id="geboortedatum">
 
-        <label>Geslacht</label>
+        <label for="geslacht">Geslacht</label>
         <select id="geslacht">
             <option>Man</option>
             <option>Vrouw</option>
@@ -38,10 +46,10 @@
             <option>Zeg ik liever niet</option>
         </select>
 
-        <label>
+        <div class="checkbox">
             <input type="checkbox" id="nieuwsbrief">
-            Ik wil de nieuwsbrief ontvangen
-        </label>
+            <label for="nieuwsbrief">Ik wil de nieuwsbrief ontvangen</label>
+        </div>
 
         <button type="submit">
             💾 Wijzigingen opslaan
