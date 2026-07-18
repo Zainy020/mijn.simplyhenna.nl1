@@ -101,11 +101,12 @@ await setDoc(doc(db, "klanten", user.uid), {
 
         console.error(error);
 
-        alert(
-            "Er ging iets mis.\n\n" +
-            error.code + "\n\n" +
-            error.message
-        );
+       console.error("VOLLEDIGE FOUT:", error);
+console.error("CODE:", error.code);
+console.error("MESSAGE:", error.message);
+console.error("STACK:", error.stack);
+
+alert(error.code + "\n\n" + error.message);
 
     }
 
